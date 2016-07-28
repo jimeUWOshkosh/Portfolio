@@ -17,6 +17,10 @@ Tweet - Pseudo Twitter Tweet Object
 
 version 0.01
 
+=head1 AUTHOR
+
+James Edwards
+
 =head1 SYNOPSIS
 
  use Tweet;
@@ -44,15 +48,34 @@ An Object to hold info about an individual tweet.
 
 has 'mesg' => ( is => 'rw', isa => Str, required => 0, );
 has 'dt' => (
-   is      => 'rw',
-   isa     => 'DateTime',
-   default => sub { DateTime->now(time_zone => 'local') },
+    is      => 'rw',
+    isa     => 'DateTime',
+    default => sub { DateTime->now( time_zone => 'local' ) },
 );
 
-=head1 COPYRIGHT
+=head1 SUBROUTINES/METHODS
+
+
+=head1 DIAGNOSTICS
+
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+
+=head1 DEPENDENCIES
+
+
+=head1 INCOMPATIBILITIES
+
+
+=head1 BUGS AND LIMITATIONS
+
+
+=head1 LICENSE AND COPYRIGHT
 
 Ya Right
 
 =cut
 
 1;
+__END__

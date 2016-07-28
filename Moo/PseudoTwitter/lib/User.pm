@@ -4,6 +4,7 @@ use strict;
 use warnings NONFATAL => 'uninitialized';
 our $VERSION = '0.01';
 use English;
+
 #use lib 'lib';
 use Moo;
 use MooX::late;
@@ -22,6 +23,10 @@ User - Pseudo Twitter User Object
 =head1 VERSION
 
 version 0.01
+
+=head1 AUTHOR
+
+James Edwards
 
 =head1 SYNOPSIS
 
@@ -80,9 +85,9 @@ An Object to hold info about a user and a list of their current tweets.
 
 =cut
 
-has 'user' =>  ( is => 'rw', isa => Str, required => 0, );
+has 'user' => ( is => 'rw', isa => Str, required => 0, );
 
-has 'name' =>  ( is => 'rw', isa => Str, required => 0, );
+has 'name' => ( is => 'rw', isa => Str, required => 0, );
 
 has 'email' => ( is => 'rw', isa => Str, required => 0, );
 
@@ -94,7 +99,8 @@ has 'tweets' => (
     isa     => 'ArrayRef[Tweet]',
     default => sub { [] },
     handles => {
-#        'push_tweet'   => 'push',
+
+        #        'push_tweet'   => 'push',
         'next_tweet'    => 'shift',
         'count_tweets'  => 'count',
         'has_no_tweets' => 'is_empty',
@@ -110,12 +116,12 @@ has 'tweets' => (
 
 sub push_tweet {
     my $this = shift;
-    my $obj = shift;
+    my $obj  = shift;
     if ( $obj->isa('Tweet') ) {
-      push @{ $this->tweets }, $obj;
+        push @{ $this->tweets }, $obj;
     }
     else {
-       croak 'Non Tweet object on list. Type: ', ref $obj;
+        croak 'Non Tweet object on list. Type: ', ref $obj;
     }
     return;
 }
@@ -159,7 +165,25 @@ sub print_all {
     return;
 }
 
-=head1 COPYRIGHT
+=head1 SUBROUTINES/METHODS
+
+
+=head1 DIAGNOSTICS
+
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+
+=head1 DEPENDENCIES
+
+
+=head1 INCOMPATIBILITIES
+
+
+=head1 BUGS AND LIMITATIONS
+
+
+=head1 LICENSE AND COPYRIGHT
 
 Ya Right
 
