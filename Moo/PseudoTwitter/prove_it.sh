@@ -1,0 +1,1 @@
+prove -lv --merge t

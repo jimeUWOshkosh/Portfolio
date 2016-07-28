@@ -1,0 +1,12 @@
+Perl project
+
+Use Moo to model a Twitter user and some tweets.
+
+Demonstrate the ability to implement some simple objects:  User and Tweet.
+
+Does not fetch live data, all data can be locally defined
+
+"User" should have attributes for contact info and an array of Tweets.
+
+Use a Test framework (e.g. Test::More)
+Have POD documentation
