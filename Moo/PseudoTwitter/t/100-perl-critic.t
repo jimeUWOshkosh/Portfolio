@@ -19,7 +19,8 @@ my %skip = map { ( $_ => 1 ) } qw( );
 
 #my @files = grep { !$skip{$_} } ( Perl::Critic::Utils::all_perl_files(qw( Makefile.PL bin lib t )) );
 my @files =
-  grep { !$skip{$_} } ( Perl::Critic::Utils::all_perl_files(qw( lib t )) );
+  grep { !$skip{$_} }
+  ( Perl::Critic::Utils::all_perl_files(qw( pt.pl lib t )) );
 
 foreach my $file (@files) {
     critic_ok( $file, $file );
