@@ -1,0 +1,15 @@
+[GuArt::Controller:2727] debug @2015-01-07 19:13:02> request->path : / in lib/GuArt/Controller.pm l. 116
+[GuArt::Controller:2727] debug @2015-01-07 19:13:02> request->path : /login/ in lib/GuArt/Controller.pm l. 116
+[GuArt::Controller:2727] debug @2015-01-07 19:13:09> request->path : / in lib/GuArt/Controller.pm l. 116
+[GuArt::Controller:2727] debug @2015-01-07 19:13:11> request->path : /closeup/1 in lib/GuArt/Controller.pm l. 116
+[GuArt::Controller:2727] debug @2015-01-07 19:13:13> request->path : / in lib/GuArt/Controller.pm l. 116
+[GuArt::Controller:2727] debug @2015-01-07 19:13:19> request->path : /closeup/1 in lib/GuArt/Controller.pm l. 116
+[GuArt::Controller:2727] debug @2015-01-07 19:13:25> request->path : /logout in lib/GuArt/Controller.pm l. 116
+[GuArt::Controller:2727] warning @2015-01-07 19:13:25> User jime is logging out in lib/GuArt/Controller.pm l. 25
+[GuArt::Controller:2727] error @2015-01-07 19:13:25> Route exception: Can't locate object method "context" via package "Dancer2::Core::App" at lib/Dancer2/Plugin/Logout.pm line 6. in /home/wds/perl5/perlbrew/perls/perl-5.20.1/lib/site_perl/5.20.1/Return/MultiLevel.pm l. 97
+[GuArt::Controller:6266] debug @2015-01-12 22:14:39> request->path : / in lib/GuArt/Controller.pm l. 116
+[GuArt::Controller:6266] debug @2015-01-12 22:14:39> request->path : /login/ in lib/GuArt/Controller.pm l. 116
+[GuArt::Controller:6266] debug @2015-01-12 22:14:43> request->path : / in lib/GuArt/Controller.pm l. 116
+[GuArt::Controller:6266] debug @2015-01-12 22:14:50> request->path : /logout in lib/GuArt/Controller.pm l. 116
+[GuArt::Controller:6266] warning @2015-01-12 22:14:50> User jime is logging out in lib/GuArt/Controller.pm l. 25
+[GuArt::Controller:6266] error @2015-01-12 22:14:50> Route exception: Can't locate object method "context" via package "Dancer2::Core::App" at lib/Dancer2/Plugin/Logout.pm line 6. in /home/wds/perl5/perlbrew/perls/perl-5.20.1/lib/site_perl/5.20.1/Return/MultiLevel.pm l. 97

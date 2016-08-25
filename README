@@ -1,0 +1,18 @@
+O'Reilly's Perl Programming Certification Classes
+(Intro, Intermediate, Advanced, Applied)
+  Final Project: ATM application
+	CGI, HTML:Template, Class:DBI, mysql
+
+
+
+An Object Oriented project: PseudoTwitter
+   a) Using Moo
+   b) Using Moose
+
+
+Geekuni's Web Development Certification
+   A Art Gallery Store application
+	Dancer2
+
+Rewrote Geekuni's project using Mojolicious::Lite
+Rewrote Geekuni's project using Mojolicious
