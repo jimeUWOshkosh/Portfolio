@@ -1,0 +1,24 @@
+<HTML>
+  <HEAD>
+    <TITLE>First Bank of O'Reilly</TITLE>
+  </HEAD>
+  <BODY>
+    <H2>First Bank of O'Reilly</H2>
+    <P>Automated Teller Machine</P>
+   <FORM ACTION="atm_process_login.cgi" METHOD="POST">
+    <TABLE>
+      <TR><H3>Welcome</H3></TR>
+      <TR>
+        <TD>Account</TD> 
+        <TD><input type="text" size=8 name="account_number" VALUE="<TMPL_VAR NAME=account_number>"></TD>
+        </TR>
+      <TR>
+        <TD>Password</TD> 
+        <TD><input type="text" size=8 name="password" VALUE="<TMPL_VAR NAME=password>">
+        </TD>
+       </TR>
+    </TABLE>
+    <INPUT TYPE="submit" VALUE="Enter">
+   </FORM>
+  </BODY>
+</HTML>

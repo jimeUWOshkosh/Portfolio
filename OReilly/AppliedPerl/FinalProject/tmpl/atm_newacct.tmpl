@@ -1,0 +1,48 @@
+<HTML>
+  <HEAD>
+    <TITLE>First Bank of O'Reilly</TITLE>
+  </HEAD>
+  <BODY>
+    <H1>First Bank of O'Reilly</H1>
+    <P>Automated Teller Machine</P>
+    <H2>Enter New Account</H2>
+    <FORM ACTION="atm_process_newacct.cgi" METHOD="POST">
+      <TABLE>
+        <TR>
+          <TD>Account:</TD> 
+          <TD><input type="text" size=8 name="account_number" VALUE="<TMPL_VAR NAME=account_number>"></TD>
+        </TR>
+        <TR><TD><BR></BR></TD></TR>
+        <TR><TD>Do you have another account you</TD></TR>
+        <TR><TD>wish to link to this new account?</TD></TR>
+        <TR>
+          <TD>Account:</TD> 
+          <TD><input type="text" size=8 name="account_number2" VALUE="<TMPL_VAR NAME=account_number2>"></TD>
+        </TR>
+        <TR><TD><BR></BR></TD></TR>
+        <TR><TD>Owner(s)</TD></TR>
+        <TR>
+          <TD>Owner #1 First Name:</TD>
+          <TD><input type="text" size=20 name="fname1" VALUE="<TMPL_VAR NAME=fname1>"></TD>
+          <TD>Last Name:</TD>
+          <TD><input type="text" size=40 name="lname1" VALUE="<TMPL_VAR NAME=lname1>"></TD>
+        </TR>
+        <TR>
+          <TD>Owner #2 First Name:</TD>
+          <TD><input type="text" size=20 name="fname2" VALUE="<TMPL_VAR NAME=fname2>"></TD>
+          <TD>Last Name:</TD>
+          <TD><input type="text" size=40 name="lname2" VALUE="<TMPL_VAR NAME=lname2>"></TD>
+        </TR>
+        <TR>
+          <TD>Deposit:</TD>
+          <TD><input type="text" size=8 name="amount" VALUE="<TMPL_VAR NAME=amount>"></TD>
+        </TR>
+        <TR>
+          <TD>Password:</TD>
+          <TD><input type="text" size=8 name="password" VALUE="<TMPL_VAR NAME=password>"></TD>
+        </TR>
+      <INPUT TYPE="submit" VALUE="Submit">
+      </TABLE>
+    </FORM>
+  </BODY>
+</HTML>

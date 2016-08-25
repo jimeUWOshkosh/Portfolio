@@ -1,0 +1,7 @@
+Geekuni's Art Gallery Store migrated to Mojolicious Lite.
+
+At the time of creatation, Dancer2 Plugins had issues. Created my own 
+Dancer2::Plugin::Logout.
+
+To execute server
+$ ./art.rc
