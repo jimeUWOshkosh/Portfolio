@@ -43,5 +43,6 @@ Temporary Items
 .apdisk
 
 *.swp
-Moo/PseudoTwitter/.tidyall.d
-Moose/PseudoTwitter/.tidyall.d
+.tidyall.d
+/Moo/PseudoTwitter/.tidyall.d
+/Moose/PseudoTwitter/.tidyall.d
