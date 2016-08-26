@@ -44,5 +44,6 @@ Temporary Items
 
 *.swp
 .tidyall.d
-/Moo/PseudoTwitter/.tidyall.d
-/Moose/PseudoTwitter/.tidyall.d
+cover_db
+#/Moo/PseudoTwitter/.tidyall.d
+#/Moose/PseudoTwitter/.tidyall.d
