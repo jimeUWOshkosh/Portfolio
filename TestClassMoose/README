@@ -1,0 +1,9 @@
+TestClassMoose README
+
+TestClassMoose
+   Migrated the previous TestClass project to Test::Class::Moose
+
+   Read disclaimer(s) in the TestClass project's README.
+
+   Note: In 2016 Test::Class:Moose is still Beta software.
+
