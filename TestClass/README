@@ -1,0 +1,35 @@
+TestClass's README
+
+Project's tree.
+├── README
+├── Test-Class-Presentation.odp
+├── Devel_Cover.sh
+├── prove_it.sh
+├── lib
+│   ├── Customer.pm
+│   ├── Person.pm
+│   └── Person
+│       └── Employee.pm
+└── t
+    ├── 02pod.t
+    ├── 03podcoverage.t
+    ├── 100-perl-critic.t
+    ├── 101-tidyall.t
+    ├── run.t
+    └── tests
+        ├── TestsFor.pm
+        └── TestsFor
+            ├── Customer.pm
+            ├── Person.pm
+            └── Person
+                └── Employee.pm
+
+Test::Class
+   Took Curtis "Ovid" Poe's Test:Class project in Chapter 14 of
+"Beginning Perl" and merged it with his Test:Class articles at
+modernperlbooks.com. Massaged the data structure to my own 
+liking!
+
+Note: Some may say Customer.pm should be in Person sub directory.
+Its where Mr. Poe had so I left it there.
+

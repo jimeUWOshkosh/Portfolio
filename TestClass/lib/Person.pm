@@ -10,7 +10,6 @@ use namespace::autoclean;
 
 our $VERSION = '0.01';
 
-
 =head1 Name
 
 Person.pm
@@ -22,19 +21,19 @@ VERSION 0.01
 =head1 SYNOPSIS
 
 use Person.pm
-my $person->new( {   title      => 'Mr.',
-                     first_name => 'Charles',
-                     last_name  => 'Drew',
-                     birthdate  => '1904-06-03',
-                 } );
+my $person = Person->new( { title      => 'Mr.',
+                            first_name => 'Charles',
+                            last_name  => 'Drew',
+                            birthdate  => '1904-06-03',
+                          } );
 
 The title attribute is optional.
-
 
 =head1 DESCRIPTION
 
 A Person object that has the attributes:
  ( title, first name, last name, birthdate)
+ The title attribute is optional.
 
 =cut
 

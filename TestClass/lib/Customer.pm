@@ -19,8 +19,19 @@ VERSION 0.01
 =head1 SYNOPSIS
 
 use Customer.pm
+my $customer = Customer->new( { title      => 'Mr.',
+                                first_name => 'Charles',
+                                last_name  => 'Drew',
+                                birthdate  => '1904-06-03',
+                              } );
+
+The title attribute is optional.
 
 =head1 DESCRIPTION
+
+A Customer object that has the attributes:
+ ( title, first name, last name, birthdate)
+ The title attribute is optional.
 
 Add the restriction to a Person object that a customer must be
 at least 18 year old.
@@ -29,7 +40,7 @@ at least 18 year old.
 
 =head2 BUILD
 
-Called after Customer->new() to validate object.
+Called after Customer->new() to validate object's birthdate.
 
 =cut
 

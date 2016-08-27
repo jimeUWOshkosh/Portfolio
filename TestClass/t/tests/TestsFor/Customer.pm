@@ -9,7 +9,34 @@ our $VERSION = '0.01';
 
 #sub class_to_test { 'Person::Customer' }
 
-sub test_mininum_age : Tests(2) {
+=head1 Name
+
+TestsFor::Customer.pm
+
+=head1 VERSION
+
+VERSION 0.01
+
+=head1 SYNOPSIS
+
+Is used by Test::Class::Moose Base Class to test the Customer object.
+
+=head1 DESCRIPTION
+
+TestsFor::Customer is inherited from TestsFor::Person, therefore in 
+Test::Class:Moose TestsFor::Customer will inherit TestsFor::Person's
+tests. This test module will only have to worry about restriction
+to birthdate being 18 or older.
+
+=head1 METHODS
+
+=head2 test_minimum_age
+
+BirthDate is a manditory attribute but a Customer must 18 or older.
+
+=cut
+
+sub test_minimum_age : Tests(2) {
     my $test = shift;
     my $year = DateTime->now->year;
     $year -= 16;
@@ -39,3 +66,18 @@ sub test_mininum_age : Tests(2) {
 }
 
 1;
+__END__
+
+=head1 BUGS
+
+No Features to report
+
+=head1 AUTHOR
+
+James Edwards
+
+=head1 LICENSE
+
+Ya Right
+
+=cut

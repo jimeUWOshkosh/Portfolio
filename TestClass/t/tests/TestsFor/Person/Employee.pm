@@ -7,7 +7,37 @@ use Person::Employee;
 
 our $VERSION = '0.01';
 
-sub class_to_test { 'Person::Employee' }    ## no critic
+=head1 Name
+
+TestsFor::Person::Employee.pm
+
+=head1 VERSION
+
+VERSION 0.01
+
+=head1 SYNOPSIS
+
+Is used by Test::Class::Moose Base Class to test the Employee object.
+
+=head1 DESCRIPTION
+
+TestsFor::Person::Employee is inherited from TestsFor::Person, 
+therefore in Test::Class:Moose TestsFor::Person::Employee will 
+inherit TestsFor::Person's tests. This test module will only 
+have to worry about "full_name" method and the optional attribute
+"employee_number".
+
+=head1 METHODS
+
+=cut
+
+#sub class_to_test { 'Person::Employee' }    ## no critic
+
+=head2 test_employee_number
+
+Test that the "employee_number" attribute is optional.
+
+=cut
 
 #sub employee_number : Tests(no_plan) {
 sub test_employee_number : Tests(3) {
@@ -30,6 +60,12 @@ sub test_employee_number : Tests(3) {
     return;
 }
 
+=head2 test_full_name
+
+Test that method "full_name" return "last_name , first_name".
+
+=cut
+
 #sub full_name : Tests(no_plan) {
 sub test_full_name : Tests(1) {
     my $test   = shift;
@@ -47,3 +83,18 @@ sub test_full_name : Tests(1) {
 }
 
 1;
+__END__
+
+=head1 BUGS
+
+No Features to report
+
+=head1 AUTHOR
+
+James Edwards
+
+=head1 LICENSE
+
+Ya Right
+
+=cut
