@@ -17,13 +17,19 @@ Geekuni's Web Development Certification
 Rewrote Geekuni's project using Mojolicious::Lite
 Rewrote Geekuni's project using Mojolicious
 
-Test::Class
+TestClass
+  Nov 10, 2015 MadMongers Mtg. 
+  Includes presentation (LibreOffice)
+
    Took Curtis "Ovid" Poe's Test:Class project in Chapter 14 of 
 "Beginning Perl" and merged it with his Test:Class articles at
 modernperlbooks.com.
 
-Test::Class::Moose
-   Migrated the previous Test::Class project.
-   Note: In 2016 Test::Class:Moose is still a Beta software
+TestClassMoose
+  Nov 10, 2015 MadMongers Mtg.
+  Includes presentation (LibreOffice)
+
+   Migrated the previous Test::Class project to Test::Class::Moose
+   Note: In 2016 Test::Class:Moose is still Beta software.
 
 
