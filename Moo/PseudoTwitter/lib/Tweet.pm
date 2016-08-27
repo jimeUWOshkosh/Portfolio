@@ -1,5 +1,4 @@
 package Tweet;
-
 use strict;
 use warnings NONFATAL => 'uninitialized';
 use Moo;
@@ -11,38 +10,34 @@ our $VERSION = '0.01';
 
 =head1 NAME
 
-Tweet - Pseudo Twitter Tweet Object
+Tweet.pm - Pseudo Twitter Tweet Object
 
 =head1 VERSION
 
-version 0.01
-
-=head1 AUTHOR
-
-James Edwards
+VERSION 0.01
 
 =head1 SYNOPSIS
 
- use Tweet;
+use Tweet;
 
- my $mesg = Tweet->new( mesg => 'Madmongers rock' );
+my $mesg = Tweet->new( mesg => 'Madmongers rock' );
 
 =head1 DESCRIPTION
 
 An Object to hold info about an individual tweet.
 
-=head1 Accessor(s)
+=head1 ATTRIBUTES
 
 =head2 mesg
 
-  data_type:	Str
+data_type:	Str
 
-=head1 Default Attribute(s)
+=head3 DEFAULT ATTRIBUTE(S)
 
-=head2 dt
+=head4 dt
 
-  data_type:	DateTime
-  value:	local time_zone now
+data_type:	DateTime
+value:	local time_zone now
 
 =cut
 
@@ -53,29 +48,24 @@ has 'dt' => (
     default => sub { DateTime->now( time_zone => 'local' ) },
 );
 
-=head1 SUBROUTINES/METHODS
+1;
+__END__
 
+=head1 METHODS
 
-=head1 DIAGNOSTICS
+NONE
 
+=head1 BUGS
 
-=head1 CONFIGURATION AND ENVIRONMENT
+No Features to report
 
+=head1 AUTHOR
 
-=head1 DEPENDENCIES
+James Edwards
 
-
-=head1 INCOMPATIBILITIES
-
-
-=head1 BUGS AND LIMITATIONS
-
-
-=head1 LICENSE AND COPYRIGHT
+=head1 LICENSE
 
 Ya Right
 
 =cut
 
-1;
-__END__
