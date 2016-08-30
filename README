@@ -32,4 +32,6 @@ TestClassMoose
    Migrated the previous Test::Class project to Test::Class::Moose
    Note: In 2016 Test::Class:Moose is still Beta software.
 
-
+TestDBIxClass
+  Apr 12, 2016 MadMongers Mtg.
+  Presentation (LibreOffice)
