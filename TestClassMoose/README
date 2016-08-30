@@ -7,3 +7,25 @@ TestClassMoose
 
    Note: In 2016 Test::Class:Moose is still Beta software.
 
+Project Directory
+├── README
+├── Test-Class-Moose-Presentation.odp
+├── Devel_Cover.sh
+├── prove_it.sh
+├── lib
+│   ├── Customer.pm
+│   ├── Person.pm
+│   └── Person
+│       └── Employee.pm
+└── t
+    ├── run2.t
+    ├── run.t
+    └── tests
+        ├── My
+        │   └── Test
+        │       └── Class.pm
+        └── TestsFor
+            ├── Customer.pm
+            ├── Person.pm
+            └── Person
+                └── Employee.pm
