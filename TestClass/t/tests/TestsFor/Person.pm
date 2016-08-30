@@ -17,12 +17,11 @@ VERSION 0.01
 
 =head1 SYNOPSIS
 
-Is used by Test::Class::Moose Base Class to test the Person object.
+Is used by Test::Class Base Class to test the Person object.
 
 =head1 DESCRIPTION
 
 Test suite to test the attributes of the Person Object
-
 
 =head1 METHODS
 

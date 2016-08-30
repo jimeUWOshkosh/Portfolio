@@ -19,12 +19,12 @@ VERSION 0.01
 
 =head1 SYNOPSIS
 
-Is used by Test::Class::Moose Base Class to test the Customer object.
+Is used by Test::Class Base Class to test the Customer object.
 
 =head1 DESCRIPTION
 
 TestsFor::Customer is inherited from TestsFor::Person, therefore in 
-Test::Class:Moose TestsFor::Customer will inherit TestsFor::Person's
+Test::Class TestsFor::Customer will inherit TestsFor::Person's
 tests. This test module will only have to worry about restriction
 to birthdate being 18 or older.
 

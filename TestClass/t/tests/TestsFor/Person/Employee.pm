@@ -17,12 +17,12 @@ VERSION 0.01
 
 =head1 SYNOPSIS
 
-Is used by Test::Class::Moose Base Class to test the Employee object.
+Is used by Test::Class Base Class to test the Employee object.
 
 =head1 DESCRIPTION
 
 TestsFor::Person::Employee is inherited from TestsFor::Person, 
-therefore in Test::Class:Moose TestsFor::Person::Employee will 
+therefore in Test::Class TestsFor::Person::Employee will 
 inherit TestsFor::Person's tests. This test module will only 
 have to worry about "full_name" method and the optional attribute
 "employee_number".

@@ -63,7 +63,7 @@ Boilerplate sub routine to be used if needed.
 
 =cut
 
-sub test_setup    : Tests(setup)    { }
+sub test_setup : Tests(setup)       { }
 sub test_teardown : Tests(teardown) { }
 sub test_shutdown : Tests(shutdown) { }
 
