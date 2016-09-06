@@ -1,7 +1,54 @@
 Geekuni's Art Gallery Store migrated to Mojolicious.
 
-At the time of creatation, Dancer2 Plugins had issues. Created my own 
-Dancer2::Plugin::Logout.
+At the time of creatation, Mojolicious Plugins had issues. Created my own 
+Mojolicious::Plugin::Logout.
+
+
+
+├── README
+└── art
+    ├── art.rc
+    ├── lib
+    │   ├── Art
+    │   │   ├── Controller
+    │   │   │   ├── Example.pm
+    │   │   │   └── Main.pm
+    │   │   └── Model
+    │   │       └── GuArt.pm
+    │   ├── Art.pm
+    │   └── Mojolicious
+    │       └── Plugin
+    │           └── Logout.pm
+    ├── public
+    │   ├── 404.html
+    │   ├── css
+    │   ├── favicon.ico
+    │   ├── images
+    │   │   ├── cm.jpg
+    │   │   ├── klimt.jpg
+    │   │   ├── malevich.jpg
+    │   │   ├── miro-ns.jpg
+    │   │   ├── mona.jpg
+    │   │   ├── scream.jpg
+    │   │   ├── sd_pom.jpg
+    │   │   ├── sunflowers.jpg
+    │   │   └── warhol-marilyn.jpg
+    │   └── index.html
+    ├── script
+    │   └── art
+    ├── t
+    │   └── basic.t
+    └── templates
+        ├── example
+        │   └── welcome.html.ep
+        ├── layouts
+        │   ├── default.html.ep
+        │   └── main.html.tt
+        ├── main
+        │   ├── image.html.tt
+        │   ├── index.html.tt
+        │   └── login.html.tt
+        └── not_found.html.ep
 
 To execute server
 $ cd art
