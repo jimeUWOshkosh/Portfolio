@@ -14,7 +14,7 @@ Geekuni's Web Development Certification
    A Art Gallery Store application
 	Dancer2
 
-Rewrote Geekuni's project using Mojolicious::Lite
+TODO: Migrate: Rewrote Geekuni's project using Mojolicious::Lite
 Rewrote Geekuni's project using Mojolicious
 
 TestClass
