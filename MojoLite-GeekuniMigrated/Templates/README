@@ -1,7 +1,38 @@
 Geekuni's Art Gallery Store migrated to Mojolicious Lite.
 
-At the time of creatation, Dancer2 Plugins had issues. Created my own 
-Dancer2::Plugin::Logout.
+At the time of creatation, Mojolicious Plugins had issues. Created my own 
+Mojolicious::Plugin::Logout.
 
 To execute server
 $ ./art.rc
+
+
+├── README
+├── art.rc
+├── ml.pl
+├── lib
+│   ├── GuArt
+│   │   └── Model.pm
+│   └── Mojolicious
+│       └── Plugin
+│           └── Logout.pm
+├── public
+│   ├── 404.html
+│   ├── favicon.ico
+│   └── images
+│       ├── cm.jpg
+│       ├── klimt.jpg
+│       ├── malevich.jpg
+│       ├── miro-ns.jpg
+│       ├── mona.jpg
+│       ├── scream.jpg
+│       ├── sd_pom.jpg
+│       ├── sunflowers.jpg
+│       └── warhol-marilyn.jpg
+└── templates
+    ├── image.html.tt
+    ├── index.html.tt
+    ├── layouts
+    │   └── main.html.tt
+    ├── login.html.tt
+    └── not_found.html.ep
