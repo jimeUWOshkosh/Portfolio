@@ -5,6 +5,10 @@
     <title>GuArt Exchange</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/isotope.css">
+    <link rel="stylesheet" href="/css/gu-art.css">
+    <script src="/javascripts/jquery.isotope.min.js"></script>
+    <script src="/javascripts/gu-art.js"></script>
   </head>
   <body>
     <div class="container">
@@ -12,7 +16,7 @@
     <div class="page-header">
       <h1>
         GuArt Exchange
-        [% IF index_user %]<small>[% message %]</small>
+        [% IF index_user %]<small id="message">[% message %]</small>
         [% END %]
       </h1>
     </div>

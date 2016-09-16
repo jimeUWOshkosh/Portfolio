@@ -41,28 +41,37 @@ get '/closeup/:image_id' => sub {
   };
 };
 
-get '/buy/:idx' => sub {
-  unless (session('user')) {
-    # We need to log in
-    return forward '/login';
-  }
-  session 'cash_reserve' => session('cash_reserve') - 
-                            session('data')->{param('idx')}->{price};
-  session refresh_prices => 1;
-  session('data')->{param('idx')}->{own} = 1;
-  redirect '/';
+sub retrieve_data {
+  my $retval = to_json({
+    artworks      => session('data'),
+    cash_reserve  => session('cash_reserve'),
+    index_user    => session('user'),
+    message       => generate_message(),
+  }, {pretty => 1 });
+
+  return $retval;
+}
+
+get '/retrieve-data' => sub {
+  return retrieve_data();
 };
 
-get '/sell/:idx' => sub {
-  unless (session('user')) {
-    # We need to log in
-    return forward '/login';
+get '/toggle-ownership/:idx' => sub {
+  my $selling = session('data')->{param('idx')}->{own};
+  session('data')->{param('idx')}->{own} = !  session('data')->{param('idx')}->{own};
+
+  my $delta = $selling ? 1 : -1;
+  session 'cash_reserve' => session('cash_reserve') +
+    $delta * session('data')->{param('idx')}->{price};
+
+  if (!defined(session('transactions'))) {
+    session 'transactions' => 0;
   }
-  session 'cash_reserve' => session('cash_reserve') + 
-                            session('data')->{param('idx')}->{price};
-  session refresh_prices => 1;
-  session('data')->{param('idx')}->{own} = 0;
-  redirect '/';
+  session 'transactions' => session('transactions') + 1;
+
+  GuArt::Model::update_prices(session('data'));
+
+  return retrieve_data();
 };
 
 any ['get', 'post'] => '/' => sub {
@@ -107,10 +116,17 @@ hook before => sub {
   debug 'request->path : '.request->path;
   unless (session('user') || params->{login_user} || 
            request->path =~ m{/login} ||
+           request->path =~ m{/retrieve-data} ||
            request->path eq '/favicon.ico') {
     # We need to log in
     if (request->path ne '/login/') {
       return redirect '/login'.request->path;
+    }
+    if (session('transactions')) {
+      var message => 'Hello ' . session('user') . '. A gin and tonic for you?';
+    }
+    else {
+      var message => generate_message();
     }
   }
   my $flg = session('refresh_prices') // 0;
