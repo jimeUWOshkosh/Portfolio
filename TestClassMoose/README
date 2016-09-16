@@ -1,7 +1,14 @@
 TestClassMoose README
 
-TestClassMoose
+Nov 10, 2015 MadMongers Mtg.
+Includes presentation (LibreOffice)
+
+
    Migrated the previous TestClass project to Test::Class::Moose
+
+      Took Curtis "Ovid" Poe's Test:Class project in Chapter 14 
+      of "Beginning Perl" and merged it with his Test:Class 
+      articles at modernperlbooks.com.
 
    Read disclaimer(s) in the TestClass project's README.
 
