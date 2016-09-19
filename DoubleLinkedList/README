@@ -1,0 +1,6 @@
+DoubleLinkedList test pgms
+ Used dummy header and tail nodes to make the logic easier.
+   DDL1.pl
+     Derefernces use the binary infix operator (arrow operator)
+   DDL2.pl
+     Derefernces do NOT use the binary infix operator (arrow operator)
