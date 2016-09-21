@@ -3,19 +3,16 @@ O'Reilly's Perl Programming Certification Classes
   Final Project: ATM application
 	CGI, HTML:Template, Class:DBI, mysql
 
-
-
 An Object Oriented project: PseudoTwitter
    a) Using Moo
    b) Using Moose
-
 
 Geekuni's Web Development Certification
    A Art Gallery Store application
 	Dancer2
 
 TODO: Migrate: Rewrote Geekuni's project using Mojolicious::Lite
-Rewrote Geekuni's project using Mojolicious
+               Rewrote Geekuni's project using Mojolicious
 
 TestClass
   Nov 10, 2015 MadMongers Mtg. 
