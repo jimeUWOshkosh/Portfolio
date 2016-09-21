@@ -31,8 +31,15 @@ sub insert_node_before {
    my ($data, $ptr) = @_;
    say "start insert_node_before" if $Dbug;
 
-   # Create node and hook to previous node
-   my $rh_node = { data => $data, prev => ${$ptr}{prev}, nxt => $ptr };
+   my $rh_node;
+
+   eval {
+      # Create node and hook to previous node
+      $rh_node = { data => $data, prev => ${$ptr}{prev}, nxt => $ptr };
+      1
+   } or do {
+      croak "caught error: $@"; 
+   };
 
    # Hook to node that got pushed down the list
    ${$rh_node}{nxt}{prev} = $rh_node;
@@ -48,7 +55,7 @@ sub print_forward {
    say "start print_forward" if $Dbug;
    my $ptr = shift;
    while ($ptr) {
-      say '  ', ${$ptr}{data};
+      say '  ', ${$ptr}{data} or croak "output error: $!";
       $ptr = ${$ptr}{nxt};
    }
    say "end print_forward", "\n" if $Dbug;
@@ -59,7 +66,7 @@ sub print_backwards {
    say "start print_backwards" if $Dbug;
    my $ptr = shift;
    while ($ptr) {
-      say '  ', ${$ptr}{data};
+      say '  ', ${$ptr}{data} or croak "output error: $!";
       $ptr = ${$ptr}{prev};
    }
    say "end print_backwards", "\n" if $Dbug;

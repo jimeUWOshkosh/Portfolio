@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 use strict; use warnings; use feature 'say'; use Carp 'croak';
 use Data::Dumper;
+use Try::Tiny;
 our $Dbug = 1;
 
 our $VERSION = qw( 0.01);
@@ -31,8 +32,16 @@ sub insert_node_before {
    my ($data, $ptr) = @_;
    say "start insert_node_before" if $Dbug;
 
+   my $rh_node;
+
    # Create node and hook to previous node
-   my $rh_node = { data => $data, prev => $ptr->{prev}, nxt => $ptr };
+   try {
+      $rh_node = { data => $data, prev => $ptr->{prev}, nxt => $ptr };
+   } catch {
+      # From Try::Tiny Pod: Inside the "catch" block the caught error 
+      #                     is stored in $_
+      croak "caught error: $_"; 
+   };
 
    # Hook to node that got pushed down the list
    $rh_node->{nxt}->{prev} = $rh_node;
@@ -48,7 +57,7 @@ sub print_forward {
    say "start print_forward" if $Dbug;
    my $ptr = shift;
    while ($ptr) {
-      say '  ', $ptr->{data};
+      say '  ', $ptr->{data} or croak "output error: $!";
       $ptr = $ptr->{nxt};
    }
    say "end print_forward", "\n" if $Dbug;
@@ -59,7 +68,7 @@ sub print_backwards {
    say "start print_backwards" if $Dbug;
    my $ptr = shift;
    while ($ptr) {
-      say '  ', $ptr->{data};
+      say '  ', $ptr->{data} or croak "output error: $!";
       $ptr = $ptr->{prev};
    }
    say "end print_backwards", "\n" if $Dbug;
