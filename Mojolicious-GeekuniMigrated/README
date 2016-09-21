@@ -3,7 +3,9 @@ Geekuni's Art Gallery Store migrated to Mojolicious.
 At the time of creatation, Mojolicious Plugins had issues. Created my own 
 Mojolicious::Plugin::Logout.
 
-
+Get JPGs for public/images sub-directory
+from the project Geekuni-PerlWebDev
+public/images sub-directory.
 
 ├── README
 └── art

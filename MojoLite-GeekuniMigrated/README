@@ -1,0 +1,11 @@
+MojoLicious::Lite Geekuni project migraded
+
+EmbeddedHTML
+   All HTML and Templates in the program
+
+External
+   All HTML and Templates are external.
+
+Get JPGs for public/images sub-directory
+from the project Geekuni-PerlWebDev
+public/images sub-directory.

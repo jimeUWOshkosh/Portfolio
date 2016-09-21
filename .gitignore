@@ -46,3 +46,6 @@ Temporary Items
 .tidyall.d
 cover_db
 log/
+MojoLite-GeekuniMigrated/Embedded/public/images/*.jpg
+MojoLite-GeekuniMigrated/External/public/images/*.jpg
+Mojolicious-GeekuniMigrated/art/public/images/*.jpg
