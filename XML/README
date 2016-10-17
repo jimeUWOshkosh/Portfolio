@@ -1,0 +1,13 @@
+XML project
+
+  1) Send a XML record to a message queue
+  2) Receive XML record(s) from a message queue
+     a) verify XML records against its schema 
+
+
+  XMLsendNetAMQPRabbitMQ.pl
+  peoplev2.xml      # sample of XML record
+  peoplev2.xsd      # Schema of XML record (binary)
+  peoplev2.xsd.txt  # Schema of XML record in text
+  XMLrecvNetAMQPRabbitMQ.pl
+

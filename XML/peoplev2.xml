@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<people>
+  <person>
+    <firstname>Benny</firstname>
+    <lastname>Jets</lastname>
+    <birthdate>2010-01-01T00:00:00</birthdate>
+  </person>
+  <person>
+    <firstname>John</firstname>
+    <lastname>Smith</lastname>
+    <birthdate>2004-05-03T00:00:00</birthdate>
+  </person>
+  <person>
+    <firstname>Joe</firstname>
+    <lastname>Schmo</lastname>
+    <birthdate>2007-08-02T00:00:00</birthdate>
+  </person>
+</people>
