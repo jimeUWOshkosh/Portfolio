@@ -1,0 +1,4 @@
+{
+    "include" : [ "test06", "test10" ],
+    "exclude" : [ "test22", "test33" ]
+}

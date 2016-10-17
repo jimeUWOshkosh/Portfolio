@@ -1,0 +1,16 @@
+Attribute Handlers
+
+   Proof of concept:
+   Try to create a way to filter named test(s) to executed
+   using perl's subroutine attributes with arguments.
+
+   myconfig.json   # Potential configuration file to declare
+                   # subtest name to include and/or exclude
+
+   AHsinglefile.t  # Concept in one file
+
+   # Concept modularized
+   MyAttributeHandler.pm  # Attribute defined
+   MySubs.pm              # Attribute Subroutine
+   AHmodular.t            # test program using methods and subroutines
+
