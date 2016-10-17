@@ -1,3 +1,5 @@
+Portfolio
+
 O'Reilly's Perl Programming Certification Classes
 (Intro, Intermediate, Advanced, Applied)
   Final Project: ATM application
@@ -19,8 +21,8 @@ TestClass
   Includes presentation (LibreOffice)
 
    Took Curtis "Ovid" Poe's Test:Class project in Chapter 14 of 
-"Beginning Perl" and merged it with his Test:Class articles at
-modernperlbooks.com.
+   "Beginning Perl" and merged it with his Test:Class articles at
+   modernperlbooks.com.
 
 TestClassMoose
   Nov 10, 2015 MadMongers Mtg.
@@ -32,6 +34,16 @@ TestClassMoose
 TestDBIxClass
   Apr 12, 2016 MadMongers Mtg.
   Presentation (LibreOffice)
+
+AttributeHandler
+   Proof of concept:
+   Try to create a way to filter named test(s) to executed
+   using perl's subroutine attributes with arguments.
+
+XML
+   Put a XML message on a message queue.
+   Read XML messages off a message queue and verify against
+   the XML record's schmea (xsd).
 
 DoubleLinkedList test pgms
  Used dummy header and tail nodes to make the logic easier.
