@@ -26,7 +26,8 @@ James Edwards
 =cut
 
 
-
+# insert node before the node pointer passed in
+# $data in this case is a just a message
 sub insert_node_before { 
    my ($data, $ptr) = @_;
    say "start insert_node_before" if $Dbug;
@@ -36,9 +37,9 @@ sub insert_node_before {
    eval {
       # Create node and hook to previous node
       $rh_node = { data => $data, prev => ${$ptr}{prev}, nxt => $ptr };
-      1
+      1;
    } or do {
-      croak "caught error: $@"; 
+      croak "caught error 'insert_node_before': $@"; 
    };
 
    # Hook to node that got pushed down the list
@@ -74,9 +75,16 @@ sub print_backwards {
 }
 
 
-my $rh_tail = { data => 'dummy tail node', prev => undef, nxt => undef    };
-my $rh_hdr  = { data => 'dummy hdr node',  prev => undef, nxt => $rh_tail };
-${$rh_tail}{prev} = $rh_hdr;
+# Set up. Create dummy header and tail and link up
+my ($rh_tail, $rh_hdr);
+eval {
+   $rh_tail = { data => 'dummy tail node', prev => undef, nxt => undef    };
+   $rh_hdr  = { data => 'dummy hdr node',  prev => undef, nxt => $rh_tail };
+   ${$rh_tail}{prev} = $rh_hdr;
+   1;
+} or do {
+   croak "caught error in 'setup': $@"; 
+};
 
 
 # insert a front of list

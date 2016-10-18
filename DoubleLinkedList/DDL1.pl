@@ -27,7 +27,8 @@ James Edwards
 =cut
 
 
-
+# insert node before the node pointer passed in
+# $data in this case is a just a message
 sub insert_node_before { 
    my ($data, $ptr) = @_;
    say "start insert_node_before" if $Dbug;
@@ -75,17 +76,20 @@ sub print_backwards {
    return;
 }
 
-
-my $rh_tail = { data => 'dummy tail node', prev => undef, nxt => undef    };
-my $rh_hdr  = { data => 'dummy hdr node',  prev => undef, nxt => $rh_tail };
-$rh_tail->{prev} = $rh_hdr;
+# Set up. Create dummy header and tail and link up
+my ($rh_tail, $rh_hdr);
+try {
+   $rh_tail = { data => 'dummy tail node', prev => undef, nxt => undef    };
+   $rh_hdr  = { data => 'dummy hdr node',  prev => undef, nxt => $rh_tail };
+   $rh_tail->{prev} = $rh_hdr;
+} catch {
+      croak "caught error in 'set up': $_"; 
+};
 
 # insert a front of list
 my $list_hdr = $rh_hdr->{nxt};
 $list_hdr = insert_node_before( '1st node', $list_hdr );
 $list_hdr = insert_node_before( '2nd node', $list_hdr );
-#my $list_hdr = $rh_hdr->{nxt};
-#insert_node_before( '3rd node', $list_hdr );
 
 # insert at the tail end
 insert_node_before( '3rd node', $rh_tail );
