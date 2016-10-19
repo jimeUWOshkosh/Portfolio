@@ -1,0 +1,101 @@
+OReillyMigratedToMojolicious
+
+Perl 4: Lesson 15: Objective 2:
+
+Write a web-based ATM that provides functionality for credit, debit, 
+statement generation, and transfer to another account listed from a 
+pull-down menu. 
+
+Mojolicious, TemplateToolkit, DBIx::Class, mysql, Test::Class::Moose
+
+├── atm
+├── README
+└───├── a_t_m.json
+    ├── atm.rc
+    ├── CPAN.DEPENDENCIES
+    ├── Devel-Cover.bash
+    ├── prove-it.bash
+    ├── SetUsersPasswd.txt
+    ├── db
+    │   ├── ATMnotes.txt
+    │   ├── ATM-sql.txt
+    │   ├── dbicdump2.sh
+    │   ├── dbicdump.conf
+    │   └── dbicdump.sh
+    ├── lib
+    │   ├── ATM
+    │   │   ├── Controller
+    │   │   │   ├── Login.pm
+    │   │   │   ├── Main.pm
+    │   │   │   └── Trans.pm
+    │   │   ├── Model
+    │   │   │   ├── Bank.pm
+    │   │   │   └── Library.pm
+    │   │   ├── Schema
+    │   │   │   ├── Result
+    │   │   │   │   ├── Account.pm
+    │   │   │   │   ├── Acctran.pm
+    │   │   │   │   ├── Customer.pm
+    │   │   │   │   ├── Person.pm
+    │   │   │   │   ├── SingleTransaction.pm
+    │   │   │   │   ├── Transaction.pm
+    │   │   │   │   └── TransactionType.pm
+    │   │   │   └── ResultSet
+    │   │   │       ├── Account.pm
+    │   │   │       ├── Customer.pm
+    │   │   │       ├── Person.pm
+    │   │   │       ├── SingleTransaction.pm
+    │   │   │       ├── Transaction.pm
+    │   │   │       └── TransactionType.pm
+    │   │   └── Schema.pm
+    │   ├── ATM.pm
+    │   └── Mojolicious
+    │       └── Command
+    │           ├── generate
+    │           │   └── user.pm
+    │           └── setpassword.pm
+    ├── log
+    ├── Notes
+    │   └── CreateFromScratch.txt
+    ├── public
+    │   └── index.html
+    ├── script
+    │   └── atm
+    ├── t
+    │   ├── 01-bank.t
+    │   ├── 02-viewST.t
+    │   ├── 03-transfer.t
+    │   ├── 04-TestJoin.t
+    │   ├── 05-viewST.t
+    │   ├── 06-account_trans.t
+    │   ├── 101-PerlCritic.t
+    │   ├── basic.t
+    │   ├── runTCM.t
+    │   └── tests
+    │       ├── My
+    │       │   └── Test
+    │       │       └── Class.pm
+    │       └── TestsFor
+    │           └── ATM
+    │               └── Schema
+    │                   └── Result
+    │                       ├── Account.pm
+    │                       ├── Customer.pm
+    │                       ├── Person.pm
+    │                       ├── SingleTransaction.pm
+    │                       ├── Transaction.pm
+    │                       └── TransactionType.pm
+    └── templates
+        ├── layouts
+        │   ├── default.html.ep
+        │   └── main.html.tt
+        ├── login
+        │   └── login.html.tt
+        ├── main
+        │   └── menu.html.tt
+        └── trans
+            ├── process.html.tt
+            ├── transCR.html.tt
+            ├── transDB.html.tt
+            ├── transfer.html.tt
+            └── viewST.html.tt

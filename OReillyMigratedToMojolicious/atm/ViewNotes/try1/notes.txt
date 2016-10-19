@@ -1,0 +1,2 @@
+Tried to follow Curtis "Ovid" Poe blog dated April 18, 2014
+named "Views in DBIx::Class"

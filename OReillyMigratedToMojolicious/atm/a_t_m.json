@@ -1,0 +1,12 @@
+{
+  "appname":"ATM",
+  "title":"First Bank of O'Reilly",
+  "port":3000,
+  "charset":"UTF-8",
+  "environment":"development",
+  "RDBMS":"mysql",
+  "DSN":"DBI:mysql:atm",
+  "USER":"devel",
+  "PASSWORD":"devel",
+  "LeaveAtBottom":"dummy"
+}

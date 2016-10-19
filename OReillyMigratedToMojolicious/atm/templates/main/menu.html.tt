@@ -1,0 +1,19 @@
+[%
+    WRAPPER 'layouts/main.html.tt'
+    title = "First Bank of O'Reilly"
+%]
+    <H1>First Bank of O'Reilly</H2>
+    <P>Automated Teller Machine</P>
+    <H2>[% message %]</H2>
+    <FORM ACTION="chose" METHOD="POST">
+      <select name=select SIZE=4>
+      <option value=transCR>Process Credit</option>
+      <option value=transDB>Process Debt</option>
+      <option value=viewST>View Statement</option>
+      <option value=transfer>Transfer Money Between Accounts</option>
+      </select><br>
+      <INPUT TYPE="submit" VALUE="Enter">
+   </FORM>
+   <br></br>
+   <a href="/logout">Logout</a>
+[% END %]

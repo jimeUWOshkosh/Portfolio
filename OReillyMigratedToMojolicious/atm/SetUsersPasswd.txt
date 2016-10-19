@@ -1,0 +1,6 @@
+
+From atm subdirectory
+   ./script/atm setpassword 10001 passwd
+   ./script/atm setpassword 10002 passwd
+   ./script/atm setpassword 10003 passwd
+   ./script/atm setpassword 10004 passwd

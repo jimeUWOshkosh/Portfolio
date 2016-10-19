@@ -1,0 +1,3 @@
+use atm;
+select s.sid, s.tid, s.amount, s.previous_balance, s.new_balance, s.transaction_date, a.account_number  from single_transaction s, transactions t, account a where s.sid = t.sid and t.aid = a.aid and a.account_number = 10001;
+

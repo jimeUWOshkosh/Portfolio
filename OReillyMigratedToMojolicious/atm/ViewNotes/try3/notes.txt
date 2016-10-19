@@ -1,0 +1,3 @@
+Created a view in the database
+then used the doc
+DBIx::Class::ResultSource::View

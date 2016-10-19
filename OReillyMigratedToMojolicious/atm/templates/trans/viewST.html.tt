@@ -1,0 +1,31 @@
+[%
+    WRAPPER 'layouts/main.html.tt'
+    title = "First Bank of O'Reilly"
+%]
+<H2>First Bank of O'Reilly</H2>
+<P>Automated Teller Machine</P>
+<TABLE BORDER="1">
+  <TR><TD>Account number</TD><TD>[% account_number %]</TD></TR>
+  <TR><TD>Owner(s)</TD><TD>[% owners %]</TD></TR>
+  <TR><TD>Balance</TD><TD>[% balance %]</TD></TR>
+</TABLE>
+<FORM ACTION="menu" METHOD="POST">
+  <INPUT TYPE="submit" VALUE="Back to Main Menu">
+</FORM>
+<br> </br>
+    <a href="/logout">Logout</a>
+<TABLE BORDER="1">
+  <TR><TH>Date</TH><TH>What</TH><TH>Amount</TH><TH>Ending Balance</TH></TR>
+  [% FOREACH trans IN transactions %]
+    <TR>
+      <TD>[% trans.transaction_date %]</TD><TD>[% trans.tid %]</TD>
+      <TD>[% trans.amount %]</TD><TD>[% trans.new_balance %]</TD>
+    </TR>
+   [% END %]
+</TABLE>
+<FORM ACTION="menu" METHOD="POST">
+  <INPUT TYPE="submit" VALUE="Back to Main Menu">
+</FORM>
+<br> </br>
+<a href="/logout">Logout</a>
+[% END %]

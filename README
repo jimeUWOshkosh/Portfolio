@@ -5,6 +5,9 @@ O'Reilly's Perl Programming Certification Classes
   Final Project: ATM application
 	CGI, HTML:Template, Class:DBI, mysql
 
+O'Reilly's Migrated To Mojolicious
+  Mojolicious, TemplateToolkit, DBIx::Class, mysql, Test::Class::Moose
+
 An Object Oriented project: PseudoTwitter
    a) Using Moo
    b) Using Moose
@@ -12,9 +15,6 @@ An Object Oriented project: PseudoTwitter
 Geekuni's Web Development Certification
    A Art Gallery Store application
 	Dancer2
-
-TODO: Migrate: Rewrote Geekuni's project using Mojolicious::Lite
-               Rewrote Geekuni's project using Mojolicious
 
 TestClass
   Nov 10, 2015 MadMongers Mtg. 
@@ -51,3 +51,6 @@ DoubleLinkedList test pgms
      Derefernces use the binary infix operator (arrow operator)
    DDL2.pl
      Derefernces do NOT use the binary infix operator (arrow operator)
+
+TODO: Migrate: Rewrote Geekuni's project using Mojolicious::Lite
+               Rewrote Geekuni's project using Mojolicious

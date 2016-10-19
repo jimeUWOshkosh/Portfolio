@@ -1,0 +1,2 @@
+Tried to use a virtual table for a view according to
+DBIx::Class::ResultSource::View

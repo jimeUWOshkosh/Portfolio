@@ -1,0 +1,30 @@
+This works in mysql
+select s.sid, s.tid, s.amount, s.previous_balance, s.new_balance, s.transaction_date, a.account_number  from single_transaction s, transactions t, account a where s.sid = t.sid and t.aid = a.aid and a.account_number = 10001;
+
+but I get the error
+
+wds@joeUbuntu:~/atm$ perl t/06-account_trans.t
+DBIx::Class::Storage::DBI::_dbh_execute(): DBI Exception: DBD::mysql::st execute failed: Unknown column 'me.name' in 'field list' [for Statement "SELECT me.sid, me.name, me.amount, me.previous_balance, me.new_balance, me.transaction_date, me.account_number FROM (select s.sid, s.tid, s.amount, s.previous_balance, s.new_balance, s.transaction_date, a.account_number  from single_transaction s, transactions t, account a where s.sid = t.sid and t.aid = a.aid and a.account_number = ?
+) me" with ParamValues: 0=10001] at t/06-account_trans.t line 35
+
+I then tried
+export DBIC_TRACE=1
+with
+my $rs = $schema->resultset('SingleTransaction')->search(
+  {
+    'account_number' => 10001,
+  },
+  {
+    join     => { 'trans' => 'account',
+                  'transactiontype' => 'single_trans' },
+    '+select' => [qw(transaction_date transactiontype.name amount new_balance)],
+    '+as'     => [qw(transaction_date name amount new_balance)],
+  }
+);
+
+but I get this error
+
+wds@joeUbuntu:~/atm$ perl t/06-account_trans.t
+DBIx::Class::Storage::DBI::_dbh_execute(): DBI Exception: DBD::mysql::st execute failed: Duplicate column name 'transaction_date' [for Statement "SELECT me.sid, me.name, me.amount, me.previous_balance, me.new_balance, me.transaction_date, me.account_number FROM (SELECT me.sid, me.amount, me.tid, me.previous_balance, me.new_balance, me.transaction_date, me.transaction_date, transactiontype.name, me.amount, me.new_balance FROM single_transaction me  JOIN transactions trans ON trans.sid = me.sid  JOIN account account ON account.aid = trans.aid  JOIN transaction_type transactiontype ON transactiontype.tid = me.tid LEFT JOIN transaction_type single_trans ON single_trans.tid = transactiontype.tid WHERE ( account_number = ? )
+) me" with ParamValues: 0=10001] at t/06-account_trans.t line 35
+

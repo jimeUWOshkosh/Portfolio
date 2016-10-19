@@ -1,0 +1,10 @@
+Mojoliciou
+Mojolicious::Plugin::Bcrypt
+Moose
+MooseX::MarkAsMethods
+DBIx::Class::Schema
+MooseX::NonMoose
+Mojolicious::Plugin::TtRendere
+Readonly 
+DBD::mysql 
+DateTime::Format::MySQL

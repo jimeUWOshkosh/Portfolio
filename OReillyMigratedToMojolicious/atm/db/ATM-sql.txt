@@ -1,0 +1,85 @@
+use atm;
+
+drop table account;
+CREATE TABLE IF NOT EXISTS account (
+       aid             INTEGER AUTO_INCREMENT PRIMARY KEY,
+       account_number  INTEGER not null,
+       password	       TEXT    not null,
+       balance         DOUBLE  not null,
+       unique (aid)
+);
+
+drop table person;
+CREATE TABLE IF NOT EXISTS person (
+       pid        INTEGER AUTO_INCREMENT PRIMARY KEY,
+       first_name TEXT not null,
+       last_name  TEXT not null,
+       unique (pid)
+);
+
+drop table customer;
+CREATE TABLE IF NOT EXISTS customer (
+       cid    INTEGER AUTO_INCREMENT PRIMARY KEY,
+       aid    INTEGER not null references account(aid),
+       pid    INTEGER not null references person(pid),
+       unique (aid, pid)
+);
+
+drop table transactions;
+CREATE TABLE IF NOT EXISTS transactions (
+       sid INTEGER not null PRIMARY KEY references single_transaction(sid),
+       aid INTEGER not null references account(aid),
+       unique (sid)
+);
+
+drop table single_transaction;
+CREATE TABLE IF NOT EXISTS single_transaction (
+       sid                 INTEGER AUTO_INCREMENT PRIMARY KEY,
+       amount              DOUBLE  not null,
+       tid                 INTEGER not null references transaction_type(tid),
+       previous_balance	   DOUBLE  not null,
+       new_balance	   DOUBLE  not null,
+       transaction_date    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+       unique (sid)
+);
+
+drop table transaction_type;
+CREATE TABLE IF NOT EXISTS transaction_type (
+       tid   INTEGER AUTO_INCREMENT PRIMARY KEY,
+       name TEXT not null,
+       unique (tid)
+);
+
+INSERT INTO account (account_number, password, balance) VALUES
+(10001, '$2a$08$XSb4Q0jSOh/xMRPXS1XqQOu5VjSojnP/X/zBLNNimQEOzqqoQvrPm', 10400), # Get id = 1
+(10002, '$2a$08$cEnWORbkRlntMBDsaS6yYuPh.TnoBHKUblHuUwR86kmMyWYL9gwfK',  5200), # Get id = 2
+(10003, '$2a$08$XSb4Q0jSOh/xMRPXS1XqQOu5VjSojnP/X/zBLNNimQEOzqqoQvrPm', 40103), # Get id = 3
+(10004, '$2a$08$XSb4Q0jSOh/xMRPXS1XqQOu5VjSojnP/X/zBLNNimQEOzqqoQvrPm', 10104); # Get id = 4
+
+INSERT INTO person (first_name, last_name) VALUES
+('Emily', 'Dickinson'),  # Gets id = 1
+('Robert', 'Frost'),     # Gets id = 2
+('Walt', 'Whitman');     # Gets id = 3
+
+INSERT INTO customer (aid, pid) VALUES 
+(1, 1),   # Acct 10001 has owner Emily
+(1, 2),   # and joint owner Robert
+(2, 3),   # Acct 10002 has sole owner Walt
+(3, 1),   # Acct 10003 has owner Emily
+(4, 2);   # Acct 10004 has owner Robert
+
+INSERT INTO single_transaction 
+(amount, tid, previous_balance, new_balance, transaction_date)
+VALUES
+(100, 2, 10000, 10100, '2011-04-04' ),  # Gets id = 1
+(200, 1,  5000,  4800, '2011-04-05' ),  # Gets id = 2
+(300, 2, 10100, 10400, '2011-05-01' ),  # Gets id = 3
+(400, 2,  4800,  5200, '2011-04-06' );  # Gets id = 4
+
+INSERT INTO transactions (sid, aid) VALUES
+(1, 1),
+(2, 2),
+(3, 1),
+(4, 2);
+
+INSERT INTO transaction_type (name) VALUES ('credit'), ('debit');

@@ -1,0 +1,87 @@
+Had to make changes 1) sqlite to mysql 2) Class::DBI to DBIx::Class
+
+as wds
+
+mysql -u root -p
+
+create database atm;
+grant all on atm.* to 'wds';
+grant all on atm.* to 'jim'; # just in case
+mysql -uroot -p -e "grant all privileges on atm.* to devel@localhost identified by 'devel'"
+
+use atm;
+
+CREATE TABLE IF NOT EXISTS account (
+       id              INTEGER AUTO_INCREMENT PRIMARY KEY,
+       account_number  INTEGER not null,
+       password	       TEXT    not null,
+       balance         DOUBLE  not null,
+       unique (id)
+);
+
+CREATE TABLE IF NOT EXISTS person (
+       id         INTEGER AUTO_INCREMENT PRIMARY KEY,
+       first_name TEXT not null,
+       last_name  TEXT not null,
+       unique (id)
+);
+
+CREATE TABLE IF NOT EXISTS customer (
+       id         INTEGER AUTO_INCREMENT PRIMARY KEY,
+       account   INTEGER not null references account(id),
+       person    INTEGER not null references person(id),
+       unique (account, person)
+);
+
+CREATE TABLE IF NOT EXISTS transactions (
+       single_transaction INTEGER not null references single_transaction(id),
+       account            INTEGER not null references account(id),
+       PRIMARY KEY (single_transaction),
+       unique (single_transaction)
+);
+
+CREATE TABLE IF NOT EXISTS single_transaction (
+       id                  INTEGER AUTO_INCREMENT PRIMARY KEY,
+       amount              DOUBLE  not null,
+       transaction_type    INTEGER not null,  # References transaction_type
+       previous_balance	   DOUBLE  not null,
+       new_balance	   DOUBLE  not null,
+       transaction_date    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+       unique (id)
+);
+
+CREATE TABLE IF NOT EXISTS transaction_type (
+       id   INTEGER AUTO_INCREMENT PRIMARY KEY,
+       name TEXT not null,
+       unique (id)
+);
+
+INSERT INTO account (account_number, password, balance) VALUES
+(10001, 'ab0QBhH/Q/Vvg', 10400), # Get id = 1
+(10002, 'abk/cH2LZvQ3I',  5200); # Get id = 2
+
+INSERT INTO person (first_name, last_name) VALUES
+('Emily', 'Dickinson'),  # Gets id = 1
+('Robert', 'Frost'),     # Gets id = 2
+('Walt', 'Whitman');     # Gets id = 3
+
+INSERT INTO customer (account, person) VALUES 
+(1, 1),   # Acct 10001 has owner Emily
+(1, 2),   # and joint owner Robert
+(2, 3);   # Acct 10002 has sole owner Walt
+
+INSERT INTO single_transaction 
+(amount, transaction_type, previous_balance, new_balance, transaction_date)
+VALUES
+(100, 1, 10000, 10100, '2011-04-04' ),  # Gets id = 1
+(200, 2,  5000,  4800, '2011-04-05' ),  # Gets id = 2
+(300, 1, 10100, 10400, '2011-05-01' ),  # Gets id = 3
+(400, 1,  4800,  5200, '2011-04-06' );  # Gets id = 4
+
+INSERT INTO transactions (single_transaction, account) VALUES
+(1, 1),
+(2, 2),
+(3, 1),
+(4, 2);
+
+INSERT INTO transaction_type (name) VALUES ('credit'), ('debit');

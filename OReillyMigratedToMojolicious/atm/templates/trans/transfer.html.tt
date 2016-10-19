@@ -1,0 +1,27 @@
+[%
+    WRAPPER 'layouts/main.html.tt'
+    title = "First Bank of O'Reilly"
+%]
+<h1>First Bank of O'Reilly</h1>
+<p>Automated Teller Machine</p>
+<h2>Transaction Status</h2>
+<p>Choose Account to Transfer to</p>
+<form method="post" action="process" enctype="multipart/form-data">
+  <INPUT TYPE="hidden" NAME="type" VALUE="transfer">
+  <select name="listname"  size="[% size %]">
+    [% FOREACH option = list %]
+      <option value="[% option.account_number %]">[% option.desc %]</option>
+    [% END %]
+  </select>
+  <br />
+  Amount: <input type="text" name="amount"  size="8" maxlength="8" />
+  <br />
+  <input type="submit" name="Submit" value="Submit" />
+</form>
+<br />
+<form method="post" action="menu" enctype="multipart/form-data">
+  <input type="submit" name="Submit" value="Return to Main Menu" />
+</form>
+<br> </br>
+<a href="/logout">Logout</a>
+[% END %]

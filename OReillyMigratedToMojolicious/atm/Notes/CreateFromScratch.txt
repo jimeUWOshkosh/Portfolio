@@ -1,0 +1,97 @@
+login as wds
+
+> cd 
+> mojo generate app ATM
+
+atm
++-- lib
+|   +-- ATM
+|   |   +-- Controller
+|   |       +-- Example.pm
+|   +-- ATM.pm
++-- log
++-- notes.txt
++-- public
+|   +-- index.html
++-- script
+|   +-- atm
++-- t
+|   +-- basic.t
++-- templates
+    +-- example
+    |   +-- welcome.html.ep
+    +-- layouts
+        +-- default.html.ep
+
+---
+create DBIx::Class stuff
+    > mkdir -p ~/atm/db
+    create ~/atm/db/dbicdump.sh
+    > bash ~/atm/db/dbicdump.sh
+---
+change how you assign a password
+    > mkdir -p ~/atm/lib/Mojolicious/Command
+
+create Mojolicious::Command:setpassword.pm
+    > cd ~/atm
+    ./script/atm setpassword 10001 password
+
+---
+Create Test::Class::Moose
+    Create Test Program
+        Create ~/atm/t/runTCM.t
+
+    Create Test Base Class
+    > mkdir -p ~/atm/t/tests/My/Test
+        create ~/atm/t/test/My/Test/Class.pm
+
+    Create Test Classes
+    > mkdir -p ~/atm/t/tests/TestsFor
+
+    Create Test Classes for DB tables
+    > mkdir -p ~/atm/t/tests/TestsFor/ATM/Schema/Result
+        create a package for each table
+---
+Mojolicious Controller(s)
+    Menu
+    $ touch ~/atm/lib/ATM/Controller/Main.pm
+    $ chmod 644 ~/atm/lib/ATM/Controller/Main.pm
+    $ vi ~/atm/lib/ATM/Controller/Main.pm
+    Login
+    $ touch ~/atm/lib/ATM/Controller/Login.pm
+    $ chmod 644 ~/atm/lib/ATM/Controller/Login.pm
+    $ vi ~/atm/lib/ATM/Controller/Login.pm
+    Process
+    $ touch ~/atm/lib/ATM/Controller/Trans.pm
+    $ chmod 644 ~/atm/lib/ATM/Controller/Trans.pm
+    $ vi ~/atm/lib/ATM/Controller/Trans.pm
+---
+Mojolicious Model(s)
+    $ touch ~/atm/lib/ATM/Model/Bank.pm
+    $ chmod 644 ~/atm/lib/ATM/Model/Bank.pm
+    $ vi ~/atm/lib/ATM/Model/Bank.pm
+---
+Templates
+  Controlers (main, login, trans)
+~/atm/templates/{Contoller}/{X}.html.tt
+
+---
+cpanm Mojolicious::Plugin::Bcrypt
+cpanm Mojolicious::Plugin::TtRenderer::Engine
+---
+morbo script/atm
+
+http://localhost:3000/login
+
+---
+Testing
+   Perltidy
+   ~/atm/.perltidyrc
+
+   Perl::Critic
+   ~/atm/.perlcriticrc
+	severity = brutal
+	verbose  = 8
+	exclude  = Plenty of stuff
+
+   
