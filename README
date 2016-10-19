@@ -18,7 +18,7 @@ Geekuni's Web Development Certification
 
 TestClass
   Nov 10, 2015 MadMongers Mtg. 
-  Includes presentation (LibreOffice)
+  Includes presentation (OpenOffice/LibreOffice)
 
    Took Curtis "Ovid" Poe's Test:Class project in Chapter 14 of 
    "Beginning Perl" and merged it with his Test:Class articles at
@@ -26,14 +26,14 @@ TestClass
 
 TestClassMoose
   Nov 10, 2015 MadMongers Mtg.
-  Includes presentation (LibreOffice)
+  Includes presentation (OpenOffice/LibreOffice)
 
    Migrated the previous Test::Class project to Test::Class::Moose
    Note: In 2016 Test::Class:Moose is still Beta software.
 
 TestDBIxClass
   Apr 12, 2016 MadMongers Mtg.
-  Presentation (LibreOffice)
+  Presentation (OpenOffice/LibreOffice)
 
 AttributeHandler
    Proof of concept:
