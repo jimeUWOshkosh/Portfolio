@@ -6,7 +6,21 @@ use Readonly;
 
 #use Email::Stuff;
 
-our $VERSION = qw('0.01');
+BEGIN {
+         require Exporter;
+
+         # set the version for version checking
+         our $VERSION = qw('0.01');
+
+         # Inherit from Exporter to export functions and variables
+         our @ISA         = qw(Exporter);
+
+         # Functions and variables which are exported by default
+         our @EXPORT      = qw(add_transaction);
+
+         # Functions and variables which can be optionally exported
+		 #our @EXPORT_OK   = qw($Var1 %Hashit func3);
+}
 
 Readonly::Scalar my $NEGATIVE_ONE => -1;
 

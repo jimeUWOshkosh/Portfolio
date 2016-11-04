@@ -37,9 +37,9 @@ sub viewST {
     #   get Account id asscociated with Account Number
     my $account_model = $self->db->resultset('Account');
     my $account       = $account_model->get_account_info( $self->session('account_number') );
-    my $owners_str    = ATM::Model::Library::get_owners_names($account);
+    my $owners_str    = get_owners_names($account);
 
-    my @transactions = ATM::Model::Library::get_transaction_list_for_html( $self->db, $account );
+    my @transactions = get_transaction_list_for_html( $self->db, $account );
 
     $self->render(
         account_number => $account->account_number,
@@ -63,16 +63,16 @@ sub transfer {
 
     #   You have the Account id. find all customer associated with this account.
     #   Gather all the Person ids
-    my $ra_owners = ATM::Model::Library::get_owners_person_objs($account);
+    my $ra_owners = get_owners_person_objs($account);
 
     # Find all accounts associated with this owners
     # You Person ids of each owner, query the Customer table
-    my $ra_dest_accs = ATM::Model::Library::accounts_to_transfer_to( $self->db, $ra_owners, $account );
+    my $ra_dest_accs = accounts_to_transfer_to( $self->db, $ra_owners, $account );
 
     if ( scalar @{$ra_dest_accs} ) {
 
         # you have a list of customer objs, put the values in order according to the html layout
-        my $ra_acc_2display = ATM::Model::Library::get_customer_list_for_html( $self->db, $ra_dest_accs );
+        my $ra_acc_2display = get_customer_list_for_html( $self->db, $ra_dest_accs );
         $self->render(
             list     => $ra_acc_2display,
             size     => scalar @{$ra_acc_2display},
@@ -127,7 +127,7 @@ sub process {
         }
 
         if (
-            ATM::Model::Bank::add_transaction(
+            add_transaction(
                 $self, $self->session('account_number'),
                 'credit', $self->param('amount'),
             )
@@ -135,7 +135,9 @@ sub process {
         {
             $err = 1
               unless (
-                ATM::Model::Bank::add_transaction( $self, $to_account, 'debit', $self->param('amount'), ) );
+                add_transaction( 
+					$self, $to_account, 
+					'debit', $self->param('amount'), ) );
         }
         else {
             $err = 1;
@@ -144,11 +146,9 @@ sub process {
     else {
         $err = 1
           unless (
-            ATM::Model::Bank::add_transaction(
-                $self,
-                $self->session('account_number'),
-                $self->param('type'),
-                $self->param('amount'),
+            add_transaction( 
+				$self, $self->session('account_number'),
+                $self->param('type'), $self->param('amount'),
             )
           );
     }

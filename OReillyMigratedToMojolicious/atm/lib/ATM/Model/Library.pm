@@ -4,7 +4,23 @@ use warnings;
 use lib 'lib';
 use ATM::Schema;
 
-our $VERSION = qw('0.01');
+BEGIN {
+         require Exporter;
+
+         # set the version for version checking
+         our $VERSION = qw('0.01');
+
+         # Inherit from Exporter to export functions and variables
+         our @ISA         = qw(Exporter);
+
+         # Functions and variables which are exported by default
+         our @EXPORT      = qw(get_owners_names get_transaction_list_for_html
+		                       get_owners_person_objs accounts_to_transfer_to
+							   get_customer_list_for_html);
+
+         # Functions and variables which can be optionally exported
+		 #our @EXPORT_OK   = qw($Var1 %Hashit func3);
+}
 
 sub get_owners_person_objs {
     my $acc = shift;
