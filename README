@@ -8,6 +8,13 @@ O'Reilly's Perl Programming Certification Classes
 O'Reilly's Migrated To Mojolicious
   Mojolicious, TemplateToolkit, DBIx::Class, mysql, Test::Class::Moose
 
+ApacheLog
+  Parse an Apache log file, find out country of request using a GeoIP2 database
+  List top N Most Active Countries and show the most requested path.
+  If the request is from the USA, gather state information and List top N Most 
+  Active States and show its most requested path.
+  Please read project's README for more information.
+
 An Object Oriented project: PseudoTwitter
    a) Using Moo
    b) Using Moose

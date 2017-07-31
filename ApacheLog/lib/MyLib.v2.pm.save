@@ -1,0 +1,176 @@
+package MyLib;
+use strict; 
+use warnings;
+use Apache::Log::Parser;
+use GeoIP2::Database::Reader;
+
+=head1 NAME
+
+MyLib - Library to help in the processing a Apache log file
+
+=head1 VERSION
+
+Version 0.0001
+
+=cut
+
+BEGIN {
+   our $VERSION  = 0.0001;
+   require Exporter;
+   our @ISA      = qw(Exporter);
+   # subs & vars exported by default
+   our @EXPORT   = qw(good_request process_record); 
+   #   our @EXPORT_OK= qw($Var1 %Hashit func3); # subs & vars optionally exported
+}
+=head1 SYNOPSIS
+
+Quick summary of what the module does.
+
+    use MyLib;
+
+
+=head1 EXPORT
+
+Subroutine(s) (good_request process_record) are exported by default.
+No optionally items exported.
+
+=cut
+
+
+=head1 SUBROUTINES/METHODS
+
+=head2 good_request(record, ...)
+
+To validate whether the requested path is one that should be
+gather statistically
+
+=over
+
+=item record
+
+A line from the Apache log file
+
+=back
+
+=cut
+
+sub good_request {
+   local $_ = shift;
+   if      (/\A\/[a-f0-9]+\/css\//)    {
+   } elsif (/\A\/[a-f0-9]+\/images\//) {
+   } elsif (/\A\/[a-f0-9]+\/js\//)     {
+   } elsif (/\A\/entry-imagess\//)       {
+   } elsif (/\A\/imagess\//)             {
+   } elsif (/\A\/user-imagess\//)        {
+   } elsif (/\A\/static\//)              {
+   } elsif (/\A\/robots\.txt\//)         {
+   } elsif (/\A\/favicon\.ico\//)        {
+   } elsif (/\.(rss|atom)\z/)          {
+   } else                              {
+      return 1;
+   }
+   return 0;
+}
+
+=head2 process_record(record, reference GeoIP DB handle, reference Parser handle ...)
+
+Describe what func2 does
+
+=over
+
+=item record
+
+A line from the Apache log file that which we wish to count in
+our evaluation
+
+=back
+
+=cut
+
+
+sub process_record {
+   #  ($_,   $reader,    $parser,     \%stats,     \%us_stats,     \$bad);
+   my ($rec, $GeoDB_obj, $parser_obj, $refh_stats, $refh_us_stats, $rs_bad) = @_;
+   #   my ($rec, $GeoDB_obj, $parser_obj, $refh_stats, $refh_us_stats) = @_;
+   my $log = $parser_obj->parse($rec);
+   
+   if (good_request($log->{path})) {
+      my ($city, $country, $country_abbv, $country_name, $zone);
+      eval {
+         $city    = $GeoDB_obj->city( ip => $log->{rhost} );
+         $country = $city->country();
+	 $zone    = $city->location->time_zone;
+	 if (defined $country->iso_code) {
+	    $country_abbv = $country->iso_code;
+	    $country_name = $country->names->{en};
+         } else {
+	    $country_abbv = $country_name = 'UNKNOWN: Country Abbv.';
+	    $zone    = $city->location->time_zone;
+	 }
+	 1;
+      } or do {
+	    $country_abbv = $country_name = 'unknown: GeoDB Exception';
+      };
+
+      # world wide
+      assign_ww_entry($refh_stats, $country_abbv, $country_name, $log->{path}, $zone);
+      #      $$refh_stats{$country_abbv}{country} = $country_name if (!(exists($$refh_stats{$country_abbv})));
+      #$$refh_stats{$country_abbv}{zone} = $zone;
+      #$$refh_stats{$country_abbv}{total}++;
+      #if ($log->{path} ne '/') {
+      #   $$refh_stats{$country_abbv}{lookup}{$log->{path}}{count}++;
+      #}
+      
+      # United States
+     #assign_ww_entry($refh_stats, $country_abbv, $country_name, $log->{path}, $zone);
+      assign_us_entry($refh_us_stats, $city, $log->{path}) if ($country_abbv eq 'US');
+
+      #if ($country_abbv eq 'US') {
+      ## Not a nice interface/documentation!!!
+      ## This jump around to get the State
+	 #	my $rush       = $city->_subdivisions;   # be cool or be cast out
+	 #	my $refh       = $$rush[0];
+	 #	 my ($state, $state_name);
+	 #         if (defined $refh) {
+	 #	    $state      = $refh->iso_code;
+	 #	    $state_name = $refh->names->{en};
+	 #         } else {
+	 #	    # IPAs missing in the US
+	 #	    $state = $state_name = 'unknown';
+	 #	 }
+	 #         $$refh_stats{$state}{state_name} = $state_name unless (exists($$refh_stats{$state}));
+	 #         $$refh_stats{$state}{total}++;
+	 #         $$refh_stats{$state}{lookup}{$log->{path}}{count}++;
+	 #      }
+   } else {
+      $$rs_bad++;
+   }
+   
+}
+
+sub assign_ww_entry {
+    my ($rh_stats, $cntry_abbv, $cntry_name, $path, $zone) =@_;
+    $$rh_stats{$cntry_abbv}{country} = $cntry_name unless (exists($$rh_stats{$cntry_abbv}));
+    $$rh_stats{$cntry_abbv}{zone} = $zone;
+    $$rh_stats{$cntry_abbv}{total}++;
+    # don't store paths thare are only "/"
+    $$rh_stats{$cntry_abbv}{lookup}{$path}{count}++ unless ($path eq '/');
+}
+
+sub assign_us_entry {
+   my ($rh_us_stats, $city_obj, $path) = @_;
+   my $rush     = $city_obj->_subdivisions;   # conform or be cast out
+   my $refh_obj = $$rush[0];
+   my ($state, $state_name);
+   if (defined $refh_obj) {
+	    $state      = $refh_obj->iso_code;
+	    $state_name = $refh_obj->names->{en};
+   } else {
+	    # IPAs missing in the US
+	    $state = $state_name = 'unknown';
+   }
+   $$rh_us_stats{$state}{state_name} = $state_name unless (exists($$rh_us_stats{$state}));
+   $$rh_us_stats{$state}{total}++;
+   $$rh_us_stats{$state}{lookup}{$path}{count}++;
+}
+1;

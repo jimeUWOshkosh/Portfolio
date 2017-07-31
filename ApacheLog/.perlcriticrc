@@ -1,0 +1,4 @@
+severity = brutal
+verbose  = 8
+theme     = pbp
+exclude = ClassHierarchies::ProhibitExplicitISA ControlStructures::ProhibitCascadingIfElse Documentation::PodSpelling Documentation::RequirePodAtEnd Documentation::RequirePodSections NamingConventions::Capitalization ControlStructures::ProhibitPostfixControls References::ProhibitDoubleSigils Variables::ProhibitPunctuationVars BuiltinFunctions::ProhibitReverseSortBlock ValuesAndExpressions::ProhibitInterpolationOfLiterals ValuesAndExpressions::ProhibitNoisyQuotes BuiltinFunctions::ProhibitStringyEval ValuesAndExpressions::ProhibitEmptyQuotes InputOutput::RequireBriefOpen RegularExpressions::ProhibitEscapedMetacharacters RegularExpressions::RequireLineBoundaryMatching RegularExpressions::ProhibitUnusedCapture
