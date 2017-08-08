@@ -1,0 +1,34 @@
+Dancer2 v0.159001 to v0.205001
+
+topic-02:ex01
+a)   Template::Toolkit  see Dancer2::Config
+      defaults
+         start_tag: '<%'
+         end_tag:   '%>'
+      you can modify config.yml to get old way
+         start_tag: '[%'
+         end_tag:   '%]'
+b) No leading backslashes are not used in template statements
+     return template 'login';
+        VS
+     return template '/login';
+
+topic-04:Ex08
+   404.html
+   environment/development.yml
+      show_errors: 0
+
+topic-05:ex01
+   Used 'dancer2 -a art', I placed code into lib/art.pm
+
+topic-05:ex02
+   Dancer2::Test is depreciated. Used WWW::Mechanized to interact
+   with login screen
+
+topic-05:ex03
+  To get logging to work in config.yml, had to comment it out in
+  environment/development.yml. Then the info in config.yml worked.
+
+topic-05:ex04
+  Had to modify index.tt to get bank balance to be displayed.
+  Modified public/javascripts/gu-art.js, reLayout method to layout (line 78)

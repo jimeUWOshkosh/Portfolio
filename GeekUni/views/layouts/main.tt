@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- minor adaptation (with no downloads) of http://getbootstrap.com/getting-started/#template -->
+    <title>GuArt Exchange</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/isotope.css">
+    <link rel="stylesheet" href="/css/gu-art.css">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <script src="/javascripts/isotope.pkgd.js"></script>
+    <script src="/javascripts/gu-art.js"></script>
+  </head>
+  <body>
+    <div class="container">
+
+    <div class="page-header">
+      <h1>
+        GuArt Exchange
+        [% IF index_user %]<small id="message">[% message %]</small>
+        [% END %]
+      </h1>
+    </div>
+
+    [% content %]
+
+    </div> 
+  </body>
+</html>

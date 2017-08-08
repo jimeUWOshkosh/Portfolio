@@ -1,0 +1,77 @@
+Geekuni's Art Gallery Store
+   Login in and buy and sell pieces for art.
+
+2015 Dancer2 v0.159001
+
+This project was migrated when Dancer2 was $Dancer2 v0.205001
+August 2017
+
+To execute server
+$ perl art.pl               # http://localhost::3000/
+  OR
+$ bash scripts/run_it.sh    # http://localhost::5000/
+
+Project Directory
+├── art.pl
+├── bin
+│   └── app.psgi
+├── config.yml
+├── cpanfile
+├── environments
+│   ├── development.yml
+│   └── production.yml
+├── lib
+│   ├── art.pm
+│   ├── Dancer2
+│   │   └── Plugin
+│   │       └── Logout.pm
+│   ├── GuArt
+│   │   └── Model.pm
+│   └── old.art.pm
+├── logs
+│   └── art.log
+├── Makefile.PL
+├── MANIFEST
+├── MANIFEST.SKIP
+├── MigrationNotes.txt
+├── public
+│   ├── 404.html
+│   ├── 500.html
+│   ├── css
+│   │   ├── error.css
+│   │   ├── gu-art.css
+│   │   ├── isotope.css
+│   │   └── style.css
+│   ├── dispatch.cgi
+│   ├── dispatch.fcgi
+│   ├── favicon.ico
+│   ├── images
+│   │   ├── cm.jpg
+│   │   ├── klimt.jpg
+│   │   ├── malevich.jpg
+│   │   ├── miro-ns.jpg
+│   │   ├── mona.jpg
+│   │   ├── perldancer-bg.jpg
+│   │   ├── perldancer.jpg
+│   │   ├── scream.jpg
+│   │   ├── sd_pom.jpg
+│   │   ├── sunflowers.jpg
+│   │   └── warhol-marilyn.jpg
+│   └── javascripts
+│       ├── gu-art.js
+│       ├── isotope.pkgd.js
+│       ├── jquery.isotope.min.js
+│       └── jquery.js
+├── README
+├── scripts
+│   └── run_it.sh
+├── t
+│   ├── 001_base.t
+│   ├── 002_index_route.t
+│   └── 003_index_route.t
+└── views
+    ├── image.tt
+    ├── index.tt
+    ├── layouts
+    │   └── main.tt
+    └── login.tt
