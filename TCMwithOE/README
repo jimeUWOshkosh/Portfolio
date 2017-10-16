@@ -1,0 +1,38 @@
+TestClassMoose README
+
+Nov 10, 2015 MadMongers Mtg.
+Includes presentation (LibreOffice)
+
+
+   Migrated the previous TestClass project to Test::Class::Moose
+
+      Took Curtis "Ovid" Poe's Test:Class project in Chapter 14 
+      of "Beginning Perl" and merged it with his Test:Class 
+      articles at modernperlbooks.com.
+
+   Read disclaimer(s) in the TestClass project's README.
+
+   Note: In 2016 Test::Class:Moose is still Beta software.
+
+Project Directory
+├── README
+├── Test-Class-Moose-Presentation.odp
+├── Devel_Cover.sh
+├── prove_it.sh
+├── lib
+│   ├── Customer.pm
+│   ├── Person.pm
+│   └── Person
+│       └── Employee.pm
+└── t
+    ├── run2.t
+    ├── run.t
+    └── tests
+        ├── My
+        │   └── Test
+        │       └── Class.pm
+        └── TestsFor
+            ├── Customer.pm
+            ├── Person.pm
+            └── Person
+                └── Employee.pm
